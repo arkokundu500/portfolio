@@ -1,1 +1,1 @@
-# portfolio
+This is a Portfolio project made with basic html,css and javascript
