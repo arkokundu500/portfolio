@@ -17,12 +17,14 @@
     <header class="header">
       <a href="#" class="logo"><span>A</span>K</a>
       <nav class="navbar">
+        <ul>
         <a href="#home" style="--i:1;" class="active">Home</a>
         <a href="#about"style="--i:2;">About Me</a>
         <a href="#education"style="--i:2;">Education</a>
         <a href="#skills"style="--i:3;">My Skills</a>
-        <a href="#"style="--i:3;">My Projects</a>
-        <a href="#"style="--i:5;">Contact Me</a>
+        <a href="#projects"style="--i:3;">My Projects</a>
+        <a href="#contact"style="--i:5;">Contact Me</a>
+        </ul>
       </nav>
     </header>
     <section class="home" id="home">
@@ -36,7 +38,7 @@
             <a href="https://www.linkedin.com/in/arkokundu5000/"style="--i:9;"><i class='bx bxl-instagram' ></i></a>
             <a href="https://github.com/arkokundu500"style="--i:10;"><i class='bx bxl-github' ></i></a>
         </div>
-        <a href="#" class="btn">My CV</a>
+        <a href="#" class="btn">My Resume</a>
       </div>
         <div class="home-img">
           <img src="profile-pic.png">
@@ -175,29 +177,98 @@
        <!-- My Projects -->
 
        <section class="projects" id="projects">
+        <div class="container">
         <div class="about-title"> My<span> Projects</span></div>
-        <p>These are my projects</p>
+        <div class="project-list">
+          <div class="work">
+              <img src="calculator.png">
+              <div class="layer">
+                  <h3>Simple Calculator</h3>
+                  <p>
+                    It is a simple calculator based of HTML,CSS and JS.
+                  </p>
+                  <a href="https://csb-0igj5b.netlify.app/"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+              </div>
+          </div>
+          <div class="work">
+              <img src="jarvis.png">
+              <div class="layer">
+                  <h3>Jarvis AI</h3>
+                  <p>
+                    It is a virtual assistant capable of receiving commands from user and giving correct output as required just like Alexa,Cortana,etc. Try saying 
+                    "Open google" , "open instagram" ,"play Come and Get your Love".
+                  </p>
+                  <a href="https://jarvis-va.netlify.app/"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+              </div>
+          </div>
+          <div class="work">
+              <img src="code-editor.png">
+              <div class="layer">
+                  <h3>Online Code Editor</h3>
+                  <p>
+                    A online code editor like codepen where html,css and javascript codes can be written to form a website and its preview is shown by its side. 
+                  </p>
+                  <a href="https://online-code-editor-arko.netlify.app/"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+              </div>
+          </div>
+      </div>
+      <a href="https://www.linkedin.com/in/arkokundu5000/details/projects/" class="btn1">See more</a>
+      </div>
         </section>
 
+        <!-- Contact Me -->
+    <div id="contact">
+    <div class="container">
+        <div class="row">
+            <div class="contact-left">
+                <h1 class="about-title">Contact<span> Me</span></h1>
+                <p><i class="fa fa-envelope"></i>arkokundu500@gmail.com</p>
+            </div>
+            <div class="contact-right">
+            <form id="contact-us-form" action="" method="post">
+                <div class="form-element"><input type="text" name="name" id="name" placeholder="Your Name" required></div>
+                <div class="form-element"><input type="email" name="email" id="email" placeholder="Your Email"></div>
+                <div class="form-element"><textarea name="message" id="message" rows="6" placeholder="Your Message"></textarea></div>
+                <div class="form-element"><button type="submit" id="contact-us-submit"class="btn2">Submit</button></div>
+            </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="copyright">
+  <a href="#" class="logo"><span>A</span>K</a>
+  <p>Copyright © Arko Kundu</p>
+</div>
 
       <script src="https://unpkg.com/typed.js@2.0.15/dist/typed.umd.js"></script>
       <div onclick="scrollToTop()" class="scroll-top"><i class="fa-solid fa-circle-arrow-up"></i></div>
     <script src="script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://smtpjs.com/v3/smtp.js"></script>
     <script>
-    function sendEmail(){
-      Email.send({
-      Host : "smtp.elasticemail.com",
-      Username : "username",
-      Password : "password",
-      To : 'them@website.com',
-      From : "you@isp.com",
-      Subject : "This is the subject",
-      Body : "And this is the body"
-  }).then(
-    message => alert(message)
-  );
-}
-</script>
+      const contactformpage = document.querySelector("#contact-us-form");
+const submit = document.querySelector(".form-element > #contact-us-submit");
+const emailaddr = document.querySelector(".form-element > #email");
+const feedback = document.querySelector(".form-element > #message");
+contactformpage.onsubmit = sendFeedback;
+function sendFeedback() {
+  let body = feedback.value;
+  body = body.replace('\n','<br>');
+  body = body.replace(/ {2,}/g,'&nbsp;');
+    Email.send({
+        SecureToken: "c696855d-ba00-4f39-96ec-7a498a3d857c",
+        To : 'arkokundu500@gmail.com',
+        From : 'arkokundu500@gmail.com',
+        Subject : "[Contact Me] Reply Message"+emailaddr.value,
+        Body : body
+    }).then(
+        alert("Your email has been sent successfully!")
+    );
+  document.querySelector(".popup").classList.remove("active");
+  emailaddr.value = "";
+  feedback.value = "";
+  return false;
+};
+    </script>
   </body>
 </html>
